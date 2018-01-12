@@ -8,6 +8,9 @@
     <h5>{{message}}</h5>
     <h5>计算之后的结果：{{reversedMessage}}</h5>
 </div>
+<div id="app1">
+    <h5>{{ fullName }}</h5>
+</div>
 <script>
     var app = new Vue(
         {
@@ -23,6 +26,23 @@
             }
         }
     )
+//监听器
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo1 Bar'
+        },
+        watch: {
+            firstName: function (val) {
+                this.fullName = val + ' ' + this.lastName
+            },
+            lastName: function (val) {
+                this.fullName = this.firstName + ' ' + val
+            }
+        }
+    })
 </script>
 
 <body>
