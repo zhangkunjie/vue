@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<div id="app">
+    <todo-item v-for='item in userlist' v-bind:user='item' v-bind:key="item.id">
+    </todo-item>
+</div>
+<h1></h1>
+
+<script>
+    //自定义组件：循环遍历list列表
+    Vue.component('todo-item', {
+        props: ['user'],
+        template: '<li>{{user.name}}</li>'
+    })
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                userlist: [
+                    { id: 0, name: "tom"  },
+                    { id: 1, name: "jack" },
+                    { id: 2, name: "luce" }
+                ]
+            }
+
+        }
+    )
+</script>
+
+<body>
+</body>
+
+</html>

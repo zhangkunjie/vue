@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<div id="app">
+    <p v-if="seen">现在你看到我了</p>
+    {{ message }}
+</div>
+<div id="app1">
+    <ol>
+        <li v-for="item in list">
+            {{item.name}}
+        </li>
+    </ol>
+</div>
+<script>
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                seen: false
+            }
+        }
+
+    )
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            list: [
+                { name: "tom" },
+                { name: "张三" },
+                { name: "李四" },
+            ]
+        }
+    })
+</script>
+<body>
+</body>
+</html>

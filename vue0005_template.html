@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<div id="app">
+    <h5>后台传递过来的数据:{{ name }}</h5>
+    //返回数据如果是html,就会当做文本来处理
+    <p>Using mustaches: {{ rawHtml }}</p>
+    //返回数据如果是html,就会当做文本来处理，必须使用rawHtml
+    <p>Using v-html directive:
+        <span v-html="rawHtml"></span>
+    </p>
+    //Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令：
+    <div id="divid">12345</div>
+    <div v-bind:id="divid">12345</div>
+    //boolean判断
+    <button v-bind:disabled="isButton">Button</button>
+    divid+1={{ divid + 1 }} ok={{ ok ? 'YES' : 'NO' }} {{name.split('').reverse().join('') }}
+    <a v:bind:href="url">百度</a>
+    //循环
+    <ul v-for='item in list'>
+        <li>{{item}}</li>
+    </ul>
+</div>
+<script>
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                name: 'tom',
+                divid: 1,
+                rawHtml: '<span style="color:red">这应该是红色的</span>',
+                isButton: true,
+                list: [1, 2, 3],
+                ok: 'NO',
+                url: 'wwww.baidu.com'
+            }
+
+        }
+    )
+</script>
+
+<body>
+</body>
+</html>
