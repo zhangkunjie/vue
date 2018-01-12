@@ -5,6 +5,8 @@
     <script src="vue.js"></script>
 </head>
 <div id="app">
+    <h5>{{message}}</h5>
+    <h5>计算之后的结果：{{reversedMessage}}</h5>
 </div>
 <script>
     var app = new Vue(
@@ -15,7 +17,7 @@
             },
             computed: {
                 reversedMessage: function () {
-                    return this.message.split('').reversed().join('')
+                    return this.message.split('').reverse().join('')
                 }
 
             }
