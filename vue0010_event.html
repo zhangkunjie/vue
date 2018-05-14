@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<ul id="app">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</ul>
+<div id="app1">
+    <!-- `greet` 是在下面定义的方法名 -->
+    <button v-on:click="greet">Greet</button>
+</div>
+<ul id="app2" class="demo">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+</ul>
+<script>
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                counter: 0
+            }
+        }
+    )
+    var app = new Vue({
+        el: '#app1',
+        data: {
+            name: 'Vue.js'
+        },
+        // 在 `methods` 对象中定义方法
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    })
+    // 也可以用 JavaScript 直接调用方法
+    example2.greet() // => 'Hello Vue.js!'
+
+    var app = new Vue({
+        el: '#app2',
+        // 在 `methods` 对象中定义方法
+        methods: {
+            say: function (message) {
+                alert(message)
+            }
+        }
+    })
+</script>
+
+<body>
+</body>
+
+</html>
