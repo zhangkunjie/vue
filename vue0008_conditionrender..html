@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<div id="app">
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+</div>
+<div id="app1">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+    </template>
+</div>
+<div id="app2">
+    <h1 v-show="ok">Hello!</h1>
+</div>
+<script>
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                type: 'A'
+            }
+        }
+    )
+    var app1 = new Vue(
+        {
+            el: '#app1',
+            data: {
+                loginType: 'username'
+            }
+        }
+    )
+</script>
+<body>
+</body>
+
+</html>

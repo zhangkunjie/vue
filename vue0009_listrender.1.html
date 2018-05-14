@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<ul id="app">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+<ul id="app1">
+    <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+</ul>
+<ul id="app2" class="demo">
+    <li v-for="value in object">
+        {{ value }}
+    </li>
+</ul>
+<ul id="app3" class="demo">
+    <div v-for="(value, key) in object">
+        {{ key }}: {{ value }}
+    </div>
+</ul>
+<ul id="app4">
+    <div v-for="(value, key, index) in object">
+        {{ index }}. {{ key }}: {{ value }}
+    </div>
+</ul>
+<ul id="app5">
+    <li v-for="n in even(numbers)">{{ n }}</li>
+    <li v-for="n in 10">{{ n }}</li>
+</ul>
+
+<script>
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' },
+                    { message: 'Baby' }
+                ]
+            }
+        }
+    )
+    var app1 = new Vue(
+        {
+            el: '#app1',
+            data: {
+                parentMessage: 'Parent',
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' },
+                    { message: 'Baby' }
+                ]
+            }
+        }
+    )
+    var app2 = new Vue(
+        {
+            el: '#app2',
+            data: {
+                object: {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    age: 30
+                }
+            }
+        }
+    )
+    var app3 = new Vue(
+        {
+            el: '#app3',
+            data: {
+                object: {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    age: 30
+                }
+            }
+        }
+    )
+    var app4 = new Vue(
+        {
+            el: '#app4',
+            data: {
+                object: {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    age: 30
+                }
+            }
+        }
+    )
+    var app5 = new Vue(
+        {
+            el: '#app5',
+            data: {
+                numbers: [1, 2, 3, 4, 5]
+            },
+            methods: {
+                even: function (numbers) {
+                    return numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            }
+        }
+    )
+</script>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<style type="text/css">
+    .a {
+        font-size: 1in
+    }
+
+    .h {
+        color: red
+    }
+</style>
+<div id="app">
+    <div class="a">aaaaaa</div>
+</div>
+<div id="app1">
+    <div v-bind:class="[a, h]">bbbbb</div>
+    <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+    <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+</div>
+<div id="app2">
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">123</div>
+    <div v-bind:style="styleObject">456</div>
+</div>
+<script>
+    var app = new Vue(
+        {
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: false
+            }
+        }
+    )
+    var app1 = new Vue(
+        {
+            el: '#app1',
+            data: {
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        }
+    )
+    var app2 = new Vue(
+        {
+            el: '#app2',
+            data: {
+                activeColor: 'red',
+                fontSize: 30,
+                styleObject: {
+                    color: 'green',
+                    fontSize: '30px'
+                }
+            }
+        }
+    )
+</script>
+
+<body>
+</body>
+
+</html>
