@@ -7,7 +7,6 @@
 <div id="app1">
     <blog-post post-title="hello1"></blog-post>
     <blog-post v-bind:post-title="post.title"></blog-post>
-    
 </div>
 <script>
     Vue.component('blog-post', {
@@ -19,7 +18,7 @@
         el: "#app1",
         data: {
             post: {
-                'id':1,
+                'id': 1,
                 'title': '标题'
             }
         }

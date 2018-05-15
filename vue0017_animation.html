@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+    <style type="text/css">
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s;
+        }
+
+        .fade-enter,
+        .fade-leave-to
+        /* .fade-leave-active below
+        version 2.1.8 */
+
+            {
+            opacity: 0;
+        }
+
+        .list-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .list-enter-active,
+        .list-leave-active {
+            transition: all 1s;
+        }
+
+        .list-enter,
+        .list-leave-to
+        /* .list-leave-active for below version 2.1.8 */
+
+            {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<div id="app1">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<div id="app2" class="demo">
+    <button v-on:click="add">Add</button>
+    <button v-on:click="remove">Remove</button>
+    <transition-group name="list" tag="p">
+        <span v-for="item in items" v-bind:key="item" class="list-item">
+            {{ item }}
+        </span>
+    </transition-group>
+</div>
+<div id="app3">
+        <input v-model.number="firstNumber" type="number" step="20"> +
+        <input v-model.number="secondNumber" type="number" step="20"> =
+        {{ result }}
+        <p>
+          <animated-integer v-bind:value="firstNumber"></animated-integer> +
+          <animated-integer v-bind:value="secondNumber"></animated-integer> =
+          <animated-integer v-bind:value="result"></animated-integer>
+        </p>
+      </div>
+<script>
+    var app = new Vue({
+        el: '#app1',
+        data: {
+            show: true
+        }
+    })
+    var app = new Vue({
+        el: '#app2',
+        data: {
+            items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            nextNum: 10
+        },
+        methods: {
+            randomIndex: function () {
+                return Math.floor(Math.random() * this.items.length)
+            },
+            add: function () {
+                this.items.splice(this.randomIndex(), 0, this.nextNum++)
+            },
+            remove: function () {
+                this.items.splice(this.randomIndex(), 1)
+            },
+        }
+    })
+</script>
+
+<body>
+</body>
+
+</html>
