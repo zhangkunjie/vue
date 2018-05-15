@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="vue.js"></script>
+</head>
+<div id="app1">
+    <blog-post post-title="hello1"></blog-post>
+    <blog-post v-bind:post-title="post.title"></blog-post>
+    
+</div>
+<script>
+    Vue.component('blog-post', {
+        // 在 JavaScript 中是 camelCase 的
+        props: ['postTitle'],
+        template: '<h3>{{ postTitle }}</h3>'
+    })
+    var app = new Vue({
+        el: "#app1",
+        data: {
+            post: {
+                'id':1,
+                'title': '标题'
+            }
+        }
+    })
+</script>
+
+<body>
+</body>
+
+</html>
